@@ -254,7 +254,11 @@ class Game {
         }
     }
     update() {
-        if (!this.running) return; this.elapsedTime = Date.now() - this.startTime;
+        if (!this.running) return;
+        
+        // Calcul du temps écoulé depuis le début de la partie
+        this.elapsedTime = Date.now() - this.startTime;
+
         if (this.isFading) {
             this.fadeAlpha += 0.05;
             if (this.fadeAlpha >= 1) {
@@ -275,6 +279,10 @@ class Game {
         this.drawMap(); this.player.draw(this.ctx, this.cameraX, this.cameraY, this.zoom, this);
         this.drawUI(); requestAnimationFrame(() => this.update());
     }
-    start() { this.running = true; this.startTime = Date.now(); this.update(); }
+    start() { 
+        this.running = true; 
+        this.startTime = Date.now(); // On capture le moment exact du lancement
+        this.update(); 
+    }
 }
 if (typeof window !== 'undefined') { window.Game = Game; window.GameMap = GameMap; window.Tile = Tile; }
