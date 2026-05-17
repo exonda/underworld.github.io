@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victory - Underworlds</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .victory-container {
+            background: rgba(0, 0, 0, 0.85);
+            color: #000000;
+            padding: 60px;
+            border: 2px solid #000000;
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            box-shadow: 0 0 100px rgba(255, 255, 255, 0.5);
+        }
+        h1 { 
+            font-size: 80px; 
+            margin-bottom: 30px; 
+            letter-spacing: 10px;
+            color: #ffffff;
+        }
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 20px #000000; }
+            50% { text-shadow: 0 0 50px #000000, 0 0 100px #000000; }
+        }
+        .stats { font-size: 24px; margin-bottom: 40px; color: #fff; }
+        .back-button {
+            background: #000000;
+            color: #ffffff;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body id="home">
+    <div class="victory-container">
+        <h1>YOU WON</h1>
+        <p class="stats">Congratulations! You found the exit of the Underworlds.</p>
+        <button class="back-button" onclick="window.location.href='index.html'">BACK TO MENU</button>
+    </div>
+</body>
+</html>
