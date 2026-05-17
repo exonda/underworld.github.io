@@ -8,41 +8,71 @@
     <style>
         .victory-container {
             background: rgba(0, 0, 0, 0.85);
-            color: #000000;
+            color: #fff;
             padding: 60px;
-            border: 2px solid #000000;
-            border-radius: 20px;
+            border: 2px solid #fff;
+            border-radius: 0px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            box-shadow: 0 0 100px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 100px rgba(255, 255, 255, 0.2);
+            font-family: 'Menlo', monospace;
         }
         h1 { 
             font-size: 80px; 
-            margin-bottom: 30px; 
+            margin-bottom: 10px; 
             letter-spacing: 10px;
-            color: #ffffff;
+            color: #fff;
         }
-        @keyframes textGlow {
-            0%, 100% { text-shadow: 0 0 20px #000000; }
-            50% { text-shadow: 0 0 50px #000000, 0 0 100px #000000; }
+        .time-display {
+            font-size: 48px;
+            margin: 30px 0;
+            color: #fff;
+            letter-spacing: 2px;
         }
-        .stats { font-size: 24px; margin-bottom: 40px; color: #fff; }
+        .stats { font-size: 18px; margin-bottom: 40px; color: #888; }
         .back-button {
-            background: #000000;
-            color: #ffffff;
+            background: #fff;
+            color: #000;
             font-weight: bold;
             letter-spacing: 2px;
+            border: none;
+            padding: 15px 40px;
+            font-size: 20px;
+            cursor: pointer;
+            font-family: 'Menlo', monospace;
+        }
+        .back-button:hover {
+            background: #888;
         }
     </style>
 </head>
 <body id="home">
     <div class="victory-container">
         <h1>YOU WON</h1>
-        <p class="stats">Congratulations! You found the exit of the Underworlds.</p>
+        <p class="stats">Congratulations! You found the exit.</p>
+        
+        <div class="time-display" id="finalTime">TIME: 00:00:000</div>
+
         <button class="back-button" onclick="window.location.href='index.html'">BACK TO MENU</button>
     </div>
+
+    <script>
+        // Récupération du temps depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const timeMs = parseInt(urlParams.get('time')) || 0;
+
+        function formatTime(ms) {
+            const minutes = Math.floor(ms / 60000);
+            const seconds = Math.floor((ms % 60000) / 1000);
+            const milliseconds = ms % 1000;
+            
+            return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3, '0')}`;
+        }
+
+        document.getElementById('finalTime').innerText = "YOUR TIME: " + formatTime(timeMs);
+    </script>
 </body>
 </html>
