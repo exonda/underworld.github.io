@@ -264,7 +264,7 @@ class Game {
             if (this.fadeAlpha >= 1) {
                 this.fadeAlpha = 1; const d = this.teleportTarget;
                 if (d.isWin) { 
-                    window.location.href = 'victory.html';
+                    window.location.href = `victory.html?time=${this.elapsedTime}`;
                     return; 
                 }
                 if (d.mapId && d.mapId !== this.currentMapId) this.switchMap(d.mapId);
